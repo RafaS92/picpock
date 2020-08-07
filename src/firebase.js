@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-const firebaseApp = {
+const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyBGxy1BTDnrUy__hsHg-ZEnMYaXLdC8yBA",
   authDomain: "picpock-e2966.firebaseapp.com",
   databaseURL: "https://picpock-e2966.firebaseio.com",
@@ -9,10 +9,10 @@ const firebaseApp = {
   messagingSenderId: "391768206620",
   appId: "1:391768206620:web:09da54c4ec0e8894681ed9",
   measurementId: "G-KQF0564K0R",
-};
+});
 
 const db = firebaseApp.firestore();
-const auth = firebaseauth();
+const auth = firebase.auth();
 const storage = firebase.storage();
 
 export { db, auth, storage };
