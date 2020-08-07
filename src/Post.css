@@ -1,4 +1,23 @@
+.post {
+  max-width: 500px;
+}
+
 .post_image {
   width: 100%;
   object-fit: contain;
+}
+
+.post_text {
+  font-weight: normal;
+  padding: 20px;
+}
+
+.post_header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.post_avatar {
+  margin-right: 10px;
 }
