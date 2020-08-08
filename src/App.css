@@ -4,7 +4,8 @@
 
 .app {
   background-color: #c1f795;
-  height: 100vh;
+  background-size: 100%;
+  height: auto;
 }
 
 .app_header {
