@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { db } from "../firebase";
 import "../Post.css";
 import Avatar from "@material-ui/core/Avatar";
 
-function Post({ username, caption, imageUrl }) {
+function Post({ postId, username, caption, imageUrl }) {
+  const [comments, setComments] = useState([]);
+  const [comment, setComment] = useState("");
+
+  useEffect(() => {
+    let unsubscribe;
+    if (postId) {
+      unsubscribe = db
+        .collection("posts")
+        .doc(postId)
+        .collection("comments")
+        .onSnapshot((snapshot) => {
+          setComments(snapshot.docs.map((doc) => doc.data()));
+        });
+    }
+    return () => {
+      unsubscribe();
+    };
+  }, [postId]);
+
   return (
     <div className="post">
       <div className="post_header">
@@ -19,6 +39,16 @@ function Post({ username, caption, imageUrl }) {
         <br />
         {caption}
       </h4>
+
+      <form>
+        <input
+          className="post_input"
+          type="text"
+          placeholder="post ur shit"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+      </form>
     </div>
   );
 }
