@@ -40,6 +40,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
+  const [like, setLikes] = useState(0);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -179,7 +180,7 @@ function App() {
           {user?.displayName ? (
             <ImageUpload username={user.displayName} />
           ) : (
-            <h3>Sorry you need to login to upload</h3>
+            <h3 className="login_message">You need to login to make a post</h3>
           )}
           {posts.map(({ id, post }) => (
             <Post
@@ -190,6 +191,7 @@ function App() {
               username={post.username}
               caption={post.caption}
               imageUrl={post.imageUrl}
+              likes={post.likes}
             />
           ))}
         </div>
