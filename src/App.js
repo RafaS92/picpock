@@ -45,7 +45,6 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // User has logged in..
-        console.log(authUser);
         setUser(authUser);
       } else {
         //user has logged out...
@@ -181,6 +180,7 @@ function App() {
             <Post
               key={id}
               postId={id}
+              user={user}
               username={post.username}
               caption={post.caption}
               imageUrl={post.imageUrl}
