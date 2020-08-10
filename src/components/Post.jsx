@@ -4,7 +4,15 @@ import "../Post.css";
 import Avatar from "@material-ui/core/Avatar";
 import firebase from "firebase";
 
-function Post({ postId, username, caption, imageUrl, user, commentId, likes }) {
+function Post({
+  postId,
+  username,
+  caption,
+  imageUrl,
+  user,
+  commentId,
+  likesId,
+}) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
@@ -36,6 +44,18 @@ function Post({ postId, username, caption, imageUrl, user, commentId, likes }) {
     setComment("");
   };
 
+  const postLike = (event) => {
+    event.preventDefault();
+    const storyRef = db
+      .collection("posts")
+      .doc(postId)
+      .collection("likes")
+      .doc(likesId);
+
+    const increment = firebase.firestore.FieldValue.increment(1);
+    storyRef.update({ count: increment });
+  };
+
   return (
     <div className="post">
       <div className="post_header">
@@ -51,6 +71,10 @@ function Post({ postId, username, caption, imageUrl, user, commentId, likes }) {
         <strong>{username}</strong>
         <br />
         {caption}
+
+        <button className="like_button" onClick={postLike}>
+          Like{" "}
+        </button>
       </h4>
       <div className="post_comments">
         {comments.map((comment, commentId) => (

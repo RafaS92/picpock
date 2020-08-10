@@ -40,7 +40,6 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
-  const [like, setLikes] = useState(0);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -191,7 +190,7 @@ function App() {
               username={post.username}
               caption={post.caption}
               imageUrl={post.imageUrl}
-              likes={post.likes}
+              likesId={id}
             />
           ))}
         </div>
