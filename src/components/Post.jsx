@@ -4,7 +4,7 @@ import "../Post.css";
 import Avatar from "@material-ui/core/Avatar";
 import firebase from "firebase";
 
-function Post({ postId, username, caption, imageUrl, user }) {
+function Post({ postId, username, caption, imageUrl, user, commentId }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
@@ -53,30 +53,36 @@ function Post({ postId, username, caption, imageUrl, user }) {
         {caption}
       </h4>
       <div className="post_comments">
-        {comments.map((comment) => (
-          <p>
-            <strong>{comment.username}</strong>
-            {comment.text}
-          </p>
-        ))}
+        <ul>
+          {comments.map((comment, commentId) => (
+            <li key={commentId}>
+              <strong>{comment.username}</strong>
+              <br />
+              {comment.text}
+            </li>
+          ))}
+        </ul>
       </div>
-      <form className="post_commentBox">
-        <input
-          className="post_input"
-          type="text"
-          placeholder="Add your post..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button
-          className="post_button"
-          disabled={!comment}
-          type="subtmit"
-          onClick={postComment}
-        >
-          Post
-        </button>
-      </form>
+
+      {user && (
+        <form className="post_commentBox">
+          <input
+            className="post_input"
+            type="text"
+            placeholder="Add your post..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button
+            className="post_button"
+            disabled={!comment}
+            type="subtmit"
+            onClick={postComment}
+          >
+            Post
+          </button>
+        </form>
+      )}
     </div>
   );
 }
