@@ -3,6 +3,7 @@ import { db } from "../firebase";
 import "../Post.css";
 import Avatar from "@material-ui/core/Avatar";
 import firebase from "firebase";
+import { Button } from "@material-ui/core";
 
 function Post({
   postId,
@@ -15,9 +16,11 @@ function Post({
 }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  const [likes, setLikes] = useState(0);
 
   useEffect(() => {
     let unsubscribe;
+    let likesdata;
     if (postId) {
       unsubscribe = db
         .collection("posts")
@@ -27,9 +30,18 @@ function Post({
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
+
+      //   likesdata = db
+      //     .collection("posts")
+      //     .doc(postId)
+      //     .collection("likes")
+      //     .onSnapshot((snapshot) => {
+      //       setLikes(snapshot.docs.map((doc) => doc.data()));
+      //     });
     }
     return () => {
       unsubscribe();
+      likesdata();
     };
   }, [postId]);
 
@@ -54,6 +66,8 @@ function Post({
 
     const increment = firebase.firestore.FieldValue.increment(1);
     storyRef.update({ count: increment });
+
+    console.log("key");
   };
 
   return (
@@ -66,16 +80,15 @@ function Post({
         />
         <h3>{username}</h3>
       </div>
-      <img className="post_image" src={imageUrl} alt="" />
-      <h4 className="post_text">
-        <strong>{username}</strong>
-        <br />
-        {caption}
-
-        <button className="like_button" onClick={postLike}>
-          Like{" "}
-        </button>
-      </h4>
+      <div className="post_body">
+        <img className="post_image" src={imageUrl} alt="" />
+        <h4 className="post_text">
+          <strong>{username}</strong>
+          <br />
+          {caption}
+        </h4>
+        {likes}
+      </div>
       <div className="post_comments">
         {comments.map((comment, commentId) => (
           <div key={commentId}>
@@ -88,6 +101,10 @@ function Post({
 
       {user && (
         <form className="post_commentBox">
+          <Button className="like_button" onClick={postLike}>
+            <i className="fa fa-heart fa-lg"></i>
+          </Button>
+
           <input
             className="post_input"
             type="text"
@@ -95,6 +112,7 @@ function Post({
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
+
           <button
             className="post_button"
             disabled={!comment}

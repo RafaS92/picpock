@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  margin: 0px;
 }
 
 .app {
@@ -7,6 +7,7 @@
 }
 
 .app_header {
+  display: flex;
   position: sticky;
   top: 0;
   display: flex;
@@ -16,15 +17,25 @@
   padding: 20px;
   border-bottom: 2px solid lightgray;
   object-fit: contain;
+  height: 80px;
 }
 
 .app_headerImage {
-  object-fit: contain;
+  height: 100px;
+  width: 300px;
 }
 
 .app_signup {
   display: flex;
   flex-direction: column;
+}
+
+.app_loginContainer {
+  flex: 0.2;
+  display: flex;
+  align-items: center;
+  margin-top: 23px;
+  justify-content: space-between;
 }
 
 .app_posts {
@@ -35,4 +46,16 @@
 
 .app_postsRight {
   margin-left: 20px;
+}
+
+.auth_buttons {
+  display: flex;
+  margin-left: 20px;
+  align-content: center;
+}
+
+@media (max-width: 768px) {
+  .app_postsRight {
+    display: none;
+  }
 }

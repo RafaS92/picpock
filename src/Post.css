@@ -28,6 +28,17 @@
   margin-right: 10px;
 }
 
+.like_button {
+  border-top: 1px solid lightgray;
+  flex: 0.1;
+  padding-top: 4px;
+  color: rgb(145, 143, 143);
+}
+
+.like_button :hover {
+  color: red;
+}
+
 .post_commentBox {
   display: flex;
   margin-top: 10px;
@@ -39,15 +50,19 @@
 }
 
 .post_input {
-  flex: 0.9;
+  flex: 0.7;
   border: none;
   padding: 10px;
   border-top: 1px solid lightgray;
 }
 
 .post_button {
-  flex: 0.1;
+  flex: 0.2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
   border: none;
-  border-top: 1px solid lightgray;
-  background-color: transparent;
+  border-top: 1px solid rgb(175, 174, 174);
+  background-color: rgb(236, 234, 234);
 }
