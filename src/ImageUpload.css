@@ -1,13 +1,44 @@
 .image_upload {
   display: flex;
+  justify-items: center;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
   flex-direction: column;
-  width: 60%;
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: whitesmoke;
-  border-top: 1px solid lightgray;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+}
+
+.login_message {
+  display: flex;
+  justify-items: center;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  flex-direction: column;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+}
+
+.image_upload button {
+  background-color: #0095f6;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.image_upload button :hover {
+  background-color: #0095f6;
+  font-size: 17px;
+  font-weight: bold;
+  color: aliceblue;
 }
 
 .progress_upload {
