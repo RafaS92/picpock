@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import "../Post.css";
 import Avatar from "@material-ui/core/Avatar";
 import firebase from "firebase";
-import { Button } from "@material-ui/core";
+import { Button, StepButton } from "@material-ui/core";
 
 function Post({
   postId,
@@ -31,13 +31,9 @@ function Post({
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
 
-      //   likesdata = db
-      //     .collection("posts")
-      //     .doc(postId)
-      //     .collection("likes")
-      //     .onSnapshot((snapshot) => {
-      //       setLikes(snapshot.docs.map((doc) => doc.data()));
-      //     });
+      likesdata = db.collection("posts").onSnapshot((snapshot) => {
+        debugger;
+      });
     }
     return () => {
       unsubscribe();
@@ -67,7 +63,7 @@ function Post({
     const increment = firebase.firestore.FieldValue.increment(1);
     storyRef.update({ count: increment });
 
-    console.log("key");
+    console.log(storyRef);
   };
 
   return (
@@ -78,16 +74,16 @@ function Post({
           alt="V"
           src="/static/images/avatar/1.jpg"
         />
-        <h3>{username}</h3>
+        <h2>{username}</h2>
       </div>
       <div className="post_body">
         <img className="post_image" src={imageUrl} alt="" />
+        {likes}
         <h4 className="post_text">
           <strong>{username}</strong>
           <br />
           {caption}
         </h4>
-        {likes}
       </div>
       <div className="post_comments">
         {comments.map((comment, commentId) => (
@@ -113,14 +109,14 @@ function Post({
             onChange={(e) => setComment(e.target.value)}
           />
 
-          <button
+          <Button
             className="post_button"
             disabled={!comment}
             type="subtmit"
             onClick={postComment}
           >
             Post
-          </button>
+          </Button>
         </form>
       )}
     </div>

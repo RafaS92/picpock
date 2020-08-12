@@ -196,6 +196,7 @@ function App() {
             <Post
               key={id}
               postId={id}
+              likes={id}
               commentId={id}
               user={user}
               username={post.username}

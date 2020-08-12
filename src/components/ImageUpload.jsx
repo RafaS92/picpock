@@ -56,7 +56,7 @@ function ImageUpload({ username }) {
 
   return (
     <div className="image_upload">
-      <h3>Make a new post</h3>
+      <h3>pock your pic</h3>
       <br />
       <progress className="progress_upload" value={progress} max="100" />
       <textarea
