@@ -20,7 +20,7 @@ function Post({
 
   useEffect(() => {
     let unsubscribe;
-    let likesdata;
+
     if (postId) {
       unsubscribe = db
         .collection("posts")
@@ -30,16 +30,30 @@ function Post({
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
-
-      likesdata = db.collection("posts").onSnapshot((snapshot) => {
-        debugger;
-      });
     }
     return () => {
       unsubscribe();
-      likesdata();
     };
   }, [postId]);
+
+  useEffect(() => {
+    let likesdata;
+    if (likesId) {
+      likesdata = db
+        .collection("posts")
+        .doc(postId)
+        .collection("likes")
+        .onSnapshot((snapshot) => {
+          const newLikes = snapshot.docs[0].data();
+          setLikes(newLikes.count);
+          console.log(newLikes.count);
+        });
+    }
+
+    return () => {
+      likesdata();
+    };
+  }, [likesId]);
 
   const postComment = (event) => {
     event.preventDefault();

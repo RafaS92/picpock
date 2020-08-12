@@ -19,7 +19,7 @@
 }
 
 .post_text strong {
-  color: palevioletred;
+  color: rgb(226, 68, 121);
   font-size: 23px;
   font-weight: bold;
   font-family: URW Chancery L, cursive;
@@ -34,7 +34,7 @@
 
 .post_header h2 {
   font-family: Cambria, Cochin;
-  color: palevioletred;
+  color: rgb(226, 68, 121);
   font-size: 30px;
   margin-top: 4px;
 }
@@ -69,7 +69,7 @@
   font-family: URW Chancery L, cursive;
   font-size: 20px;
   font-weight: bold;
-  color: palevioletred;
+  color: rgb(226, 68, 121);
 }
 
 .post_input {
