@@ -29,7 +29,7 @@ function ImageUpload({ username }) {
       },
       (error) => {
         //Error function...
-        console.log(error);
+
         alert(error.message);
       },
       () => {
@@ -56,12 +56,12 @@ function ImageUpload({ username }) {
 
   return (
     <div className="image_upload">
-      <h3>Make a new post</h3>
+      <h3>pock your pic</h3>
       <br />
       <progress className="progress_upload" value={progress} max="100" />
-      <input
+      <textarea
         type="text"
-        placeholder="Enter a caption..."
+        placeholder="Make a new post..."
         onChange={(event) => setCaption(event.target.value)}
         value={caption}
       />
