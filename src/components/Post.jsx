@@ -20,6 +20,7 @@ function Post({
 
   useEffect(() => {
     let unsubscribe;
+    let likesdata;
 
     if (postId) {
       unsubscribe = db
@@ -30,36 +31,20 @@ function Post({
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
-    }
-    return () => {
-      unsubscribe();
-    };
-  }, [postId]);
 
-  useEffect(() => {
-    let likesdata;
-    if (likesId) {
       likesdata = db
         .collection("posts")
         .doc(postId)
-        .collection("likes")
         .onSnapshot((snapshot) => {
-          const newLikes = snapshot.docs[0].data();
-          setLikes(newLikes.count);
-          console.log(newLikes.count);
+          const newLikes = snapshot.data().likes;
+          setLikes(newLikes);
         });
-    } else {
-      db.collection("posts")
-        .doc(postId)
-        .collection("likes")
-        .doc(likesId)
-        .add({ count: 0 });
     }
-
     return () => {
+      unsubscribe();
       likesdata();
     };
-  }, [likesId]);
+  }, [postId]);
 
   const postComment = (event) => {
     event.preventDefault();
@@ -74,14 +59,10 @@ function Post({
 
   const postLike = (event) => {
     event.preventDefault();
-    const storyRef = db
-      .collection("posts")
-      .doc(postId)
-      .collection("likes")
-      .doc(likesId);
 
+    let storyRef = db.collection("posts").doc(postId);
     const increment = firebase.firestore.FieldValue.increment(1);
-    storyRef.update({ count: increment });
+    storyRef.update({ likes: increment });
   };
 
   return (
