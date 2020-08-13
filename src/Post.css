@@ -1,5 +1,5 @@
 .post {
-  max-width: 500px;
+  max-width: 420px;
   height: auto;
   border: 1px solid lightgray;
   margin-bottom: 45px;
@@ -13,9 +13,28 @@
 }
 
 .post_text {
+  display: flexbox;
   font-weight: normal;
   padding: 20px;
   border-bottom: 1px solid lightgray;
+}
+
+.post_text strong {
+  flex: 0.3;
+  margin-bottom: 15px;
+}
+
+.post_text p {
+  flex: 0.2;
+}
+
+.likes {
+  color: red;
+}
+
+.post_text h5 {
+  flex: 0.5;
+  margin-bottom: 15px;
 }
 
 .post_text strong {
@@ -25,7 +44,18 @@
   font-family: URW Chancery L, cursive;
 }
 
+.post_body_head {
+  display: flex;
+  justify-self: start;
+}
+
+.post_body_head p {
+  margin-top: 9px;
+  margin-right: 80px;
+}
+
 .post_header {
+  background-color: rgba(247, 234, 247, 0.705);
   display: flex;
   align-items: center;
   padding: 20px;
