@@ -93,6 +93,7 @@
   padding: 20px;
   padding-bottom: 0px;
   text-align: justify;
+  background-color: rgb(128, 128, 128);
 }
 
 .post_comments strong {
