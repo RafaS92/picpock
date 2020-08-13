@@ -48,6 +48,12 @@ function Post({
           setLikes(newLikes.count);
           console.log(newLikes.count);
         });
+    } else {
+      db.collection("posts")
+        .doc(postId)
+        .collection("likes")
+        .doc(likesId)
+        .add({ count: 0 });
     }
 
     return () => {
@@ -76,8 +82,6 @@ function Post({
 
     const increment = firebase.firestore.FieldValue.increment(1);
     storyRef.update({ count: increment });
-
-    console.log(storyRef);
   };
 
   return (
@@ -92,11 +96,18 @@ function Post({
       </div>
       <div className="post_body">
         <img className="post_image" src={imageUrl} alt="" />
-        {likes}
         <h4 className="post_text">
-          <strong>{username}</strong>
-          <br />
-          {caption}
+          <div className="post_body_head">
+            <strong>{username}</strong>
+
+            <p>
+              <i className="fa fa-heart fa-lg likes"></i>
+              {likes}
+            </p>
+          </div>
+
+          <h5>{caption}</h5>
+          <p></p>
         </h4>
       </div>
       <div className="post_comments">
@@ -112,7 +123,7 @@ function Post({
       {user && (
         <form className="post_commentBox">
           <Button className="like_button" onClick={postLike}>
-            <i className="fa fa-heart fa-lg"></i>
+            <i className="fa fa-heart fa-lg "></i>
           </Button>
 
           <input
