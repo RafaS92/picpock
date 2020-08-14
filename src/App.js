@@ -82,7 +82,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="app" id="start">
       <Modal className="modals" open={open} onClose={() => setOpen(false)}>
         <div className="makeStyles">
           <form className="app_signup">
@@ -107,7 +107,9 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={signUp}>SIGN UP</Button>
+            <Button color="primary" onClick={signUp}>
+              SIGN UP
+            </Button>
           </form>
         </div>
       </Modal>
@@ -134,14 +136,18 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={signIn}>Sign In</Button>
+            <Button color="primary" onClick={signIn}>
+              Sign In
+            </Button>
           </form>
         </div>
       </Modal>
 
       <div className="app_header">
-        <a> </a>{" "}
-        <img className="app_headerImage" src="images/logo.png" alt="" />
+        <a href="#start">
+          <img className="app_headerImage" src="images/logo.png" alt="" />{" "}
+        </a>
+
         {user ? (
           <div className="app_loginContainer">
             <Button
@@ -200,7 +206,7 @@ function App() {
 
         <div className="app_postsRight">
           <InstagramEmbed
-            url="https://instagr.am/p/Zw9o4/"
+            url="https://www.instagram.com/p/B_NenirJP6Z/?utm_source=ig_embed&amp;utm_campaign=loading"
             maxWidth={300}
             hideCaption={false}
             containerTagName="div"
