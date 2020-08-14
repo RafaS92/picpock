@@ -140,8 +140,8 @@ function App() {
       </Modal>
 
       <div className="app_header">
+        <a> </a>{" "}
         <img className="app_headerImage" src="images/logo.png" alt="" />
-
         {user ? (
           <div className="app_loginContainer">
             <Button
