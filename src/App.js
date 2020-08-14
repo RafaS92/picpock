@@ -32,6 +32,7 @@ function App() {
       if (authUser) {
         // User has logged in..
         setUser(authUser);
+        console.log(authUser.displayName);
       } else {
         //user has logged out...
         setUser(null);
@@ -58,8 +59,6 @@ function App() {
   }, []);
 
   const signUp = (event) => {
-    event.preventDefault();
-
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
@@ -107,7 +106,7 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button color="primary" onClick={signUp}>
+            <Button type="submit" color="primary" onClick={signUp}>
               SIGN UP
             </Button>
           </form>
@@ -184,7 +183,7 @@ function App() {
 
       <div className="app_posts">
         <div className="app_postsLeft">
-          {user?.displayName ? (
+          {user ? (
             <ImageUpload username={user.displayName} />
           ) : (
             <h3 className="login_message">
