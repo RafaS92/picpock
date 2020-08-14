@@ -1,5 +1,12 @@
-* {
+html,
+body,
+header {
+  width: 100%;
+  height: 100%;
   margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .app {
@@ -8,36 +15,37 @@
 
 .app_header {
   display: flex;
+  justify-content: space-between;
   position: sticky;
   top: 0;
-  display: flex;
   z-index: 1;
-  justify-content: space-between;
   background-color: white;
   padding: 20px;
   border-bottom: 2px solid lightgray;
   object-fit: contain;
   height: 80px;
+  width: 100%;
 }
 
 .app_headerImage {
   height: 100px;
-  width: 300px;
+  width: 400px;
+  margin-left: 0;
+}
+
+.app_loginContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 70px;
+  width: 200px;
 }
 
 .app_signup {
   display: flex;
   flex-direction: column;
-}
-
-.app_loginContainer {
-  flex: 0.2;
-  display: flex;
-  align-items: center;
-  margin-top: 23px;
   justify-content: space-between;
 }
-
 .app_posts {
   padding: 20px;
   display: flex;
@@ -48,14 +56,59 @@
   margin-left: 20px;
 }
 
-.auth_buttons {
+.makeStyles {
+  position: "absolute";
   display: flex;
-  margin-left: 20px;
-  align-content: center;
+  justify-items: center;
+  margin-top: 300px;
+  margin-left: 500px;
+  width: 400px;
+  background-color: rgb(255, 255, 255);
+  border: "2px solid #000";
+  box-shadow: chartreuse;
+  padding: 20px;
 }
 
 @media (max-width: 768px) {
   .app_postsRight {
     display: none;
   }
+
+  @media (max-width: 581px) {
+    .app_headerImage {
+      height: 100px;
+      width: 170px;
+      margin-left: 0;
+    }
+
+    .app_loginContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-right: 30px;
+      height: 100px;
+    }
+
+    .auth_buttons {
+      width: 100px;
+    }
+    .app_signup {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 120px;
+      width: 150px;
+    }
+  }
+
+  /* .app_headerImage {
+    flex: 0.5;
+  }
+
+  .app_loginContainer {
+    flex: 0.5;
+    align-items: center;
+    margin-right: 500px;
+    justify-content: space-between;
+  } */
 }

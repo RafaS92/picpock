@@ -1,38 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
 import Post from "./components/Post";
-import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import "./App.css";
 import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./components/ImageUpload";
 import InstagramEmbed from "react-instagram-embed";
 
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     position: "absolute",
+//     width: 380,
+//     backgroundColor: theme.palette.background.paper,
+//     border: "2px solid #000",
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing(2, 4, 3),
+//   },
+// }));
 
 function App() {
-  const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
   const [openSignIn, setOpenSignIn] = useState(false);
@@ -97,8 +83,8 @@ function App() {
 
   return (
     <div className="app">
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <div style={modalStyle} className={classes.paper}>
+      <Modal className="modals" open={open} onClose={() => setOpen(false)}>
+        <div className="makeStyles">
           <form className="app_signup">
             <center>
               <img className="app_headerImage" src="images/logo.png" alt="" />
@@ -125,8 +111,12 @@ function App() {
           </form>
         </div>
       </Modal>
-      <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
-        <div style={modalStyle} className={classes.paper}>
+      <Modal
+        className="modals"
+        open={openSignIn}
+        onClose={() => setOpenSignIn(false)}
+      >
+        <div className="makeStyles">
           <form className="app_signup">
             <center>
               <img className="app_headerImage" src="images/logo.png" alt="" />
@@ -157,7 +147,7 @@ function App() {
             <Button
               variant="outlined"
               className="auth_buttons"
-              color="dark"
+              color="default"
               onClick={() => auth.signOut()}
             >
               Logout
@@ -167,15 +157,16 @@ function App() {
           <div className="app_loginContainer">
             <Button
               variant="outlined"
-              color="dark"
+              color="default"
               className="auth_buttons"
               onClick={() => setOpenSignIn(true)}
             >
               Sign in
             </Button>
+
             <Button
               variant="outlined"
-              color="dark"
+              color="default"
               className="auth_buttons"
               onClick={() => setOpen(true)}
             >

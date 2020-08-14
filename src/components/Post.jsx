@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import "../Post.css";
 import Avatar from "@material-ui/core/Avatar";
 import firebase from "firebase";
-import { Button, StepButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 function Post({
   postId,
@@ -77,7 +77,7 @@ function Post({
       </div>
       <div className="post_body">
         <img className="post_image" src={imageUrl} alt="" />
-        <h4 className="post_text">
+        <div className="post_text">
           <div className="post_body_head">
             <strong>{username}</strong>
 
@@ -86,10 +86,8 @@ function Post({
               {likes}
             </p>
           </div>
-
-          <h5>{caption}</h5>
-          <p></p>
-        </h4>
+          <h4>{caption}</h4>
+        </div>
       </div>
       <div className="post_comments">
         {comments.map((comment, commentId) => (
