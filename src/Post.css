@@ -144,4 +144,20 @@
     margin-top: 9px;
     margin-right: 0px;
   }
+
+  .post_header h2 {
+    display: flex;
+    font-family: Cambria, Cochin;
+    color: rgb(226, 68, 121);
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 25px;
+  }
+
+  .post_comments strong {
+    font-family: URW Chancery L, cursive;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(226, 68, 121);
+  }
 }
