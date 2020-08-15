@@ -70,7 +70,9 @@ function ImageUpload({ username }) {
       <br />
       <input type="file" onChange={handleChange} />
       <br />
-      <Button onClick={handleUpload}>Post</Button>
+      <Button type="button" onClick={handleUpload}>
+        Post
+      </Button>
     </div>
   );
 }

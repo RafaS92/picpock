@@ -21,10 +21,10 @@ header {
   top: 0;
   z-index: 1;
   background-color: white;
-  padding: 20px;
+  padding-top: 20px;
   border-bottom: 2px solid lightgray;
   object-fit: contain;
-  height: 80px;
+  height: auto;
   width: 100%;
 }
 
@@ -119,6 +119,10 @@ header {
 @media (max-width: 425px) {
   .app_signup {
     width: 250px;
+  }
+
+  .auth_buttons {
+    width: 130px;
   }
 
   .makeStyles {

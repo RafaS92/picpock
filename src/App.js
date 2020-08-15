@@ -7,17 +7,6 @@ import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./components/ImageUpload";
 import InstagramEmbed from "react-instagram-embed";
 
-// const useStyles = makeStyles((theme) => ({
-//   paper: {
-//     position: "absolute",
-//     width: 380,
-//     backgroundColor: theme.palette.background.paper,
-//     border: "2px solid #000",
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing(2, 4, 3),
-//   },
-// }));
-
 function App() {
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
@@ -26,24 +15,6 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // User has logged in..
-        setUser(authUser);
-        console.log(authUser.displayName);
-      } else {
-        //user has logged out...
-        setUser(null);
-      }
-    });
-
-    return () => {
-      //perform some cleanup actions
-      unsubscribe();
-    };
-  }, [user, username]);
 
   useEffect(() => {
     db.collection("posts")
@@ -58,7 +29,28 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User has logged in..
+        setUser(authUser);
+
+        console.log(username);
+        console.log(authUser.displayName);
+      } else {
+        //user has logged out...
+        setUser(null);
+      }
+    });
+
+    return () => {
+      //perform some cleanup actions
+      unsubscribe();
+    };
+  }, [user, username]);
+
   const signUp = (event) => {
+    event.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
@@ -106,7 +98,7 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" color="primary" onClick={signUp}>
+            <Button type="button" color="primary" onClick={signUp}>
               SIGN UP
             </Button>
           </form>
@@ -166,7 +158,7 @@ function App() {
               className="auth_buttons"
               onClick={() => setOpenSignIn(true)}
             >
-              Sign in
+              Log in
             </Button>
 
             <Button
@@ -184,7 +176,9 @@ function App() {
       <div className="app_posts">
         <div className="app_postsLeft">
           {user ? (
-            <ImageUpload username={user.displayName} />
+            <ImageUpload
+              username={user.displayName ? user.displayName : username}
+            />
           ) : (
             <h3 className="login_message">
               You need to login to post, like and comment.
