@@ -7,7 +7,7 @@
 
 .post_image {
   width: 100%;
-  max-height: 37npm i0px;
+  max-height: 400px;
   object-fit: contain;
   border-bottom: 1px solid lightgray;
 }
@@ -101,12 +101,13 @@
 }
 
 .post_comments {
-  padding: 10px;
   padding-left: 25px;
   padding-bottom: 0px;
+  padding-top: 0px;
   text-align: justify;
   font-family: Cambria, Cochin;
   font-size: 20px;
+  height: auto;
 }
 
 .post_comments strong {
@@ -114,6 +115,11 @@
   font-size: 20px;
   font-weight: bold;
   color: rgb(226, 68, 121);
+}
+
+.post_comments p {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .post_input {
