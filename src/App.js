@@ -34,9 +34,6 @@ function App() {
       if (authUser) {
         // User has logged in..
         setUser(authUser);
-
-        console.log(username);
-        console.log(authUser.displayName);
       } else {
         //user has logged out...
         setUser(null);
@@ -81,19 +78,19 @@ function App() {
               <img className="app_headerImage" src="images/logo.png" alt="" />
             </center>
             <Input
-              placeholder="username"
+              placeholder="Username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <Input
-              placeholder="email"
+              placeholder="Email"
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
-              placeholder="password"
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -116,13 +113,13 @@ function App() {
             </center>
 
             <Input
-              placeholder="email"
+              placeholder="Email"
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
-              placeholder="password"
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
