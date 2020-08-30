@@ -53,8 +53,10 @@
 }
 
 .post_body_head p {
-  margin-top: 9px;
-  margin-right: 80px;
+  display: flex;
+  justify-self: center;
+  align-content: center;
+  margin-top: 8px;
 }
 
 .post_text h4 {
@@ -139,11 +141,6 @@
   border: none;
   border-top: 1px solid rgb(175, 174, 174);
   background-color: rgb(236, 234, 234);
-}
-
-.post_body_head p {
-  margin-top: 9px;
-  margin-right: 80px;
 }
 
 @media (max-width: 581px) {
