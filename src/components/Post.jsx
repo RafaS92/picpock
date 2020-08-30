@@ -80,11 +80,14 @@ function Post({
         <div className="post_text">
           <div className="post_body_head">
             <strong>{username}</strong>
-
-            <p>
-              <i className="fa fa-heart fa-lg likes"></i>
-              {likes}
-            </p>
+            {likes > 0 ? (
+              <p>
+                <i className="fa fa-heart fa-lg likes"></i>
+                {likes}
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <h4>{caption}</h4>
         </div>
